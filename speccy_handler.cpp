@@ -128,6 +128,15 @@ static struct eSpeccyHandler : public eHandler, public eRZX::eHandler, public xZ
 			speccy->CPU()->HandlerIo(this);
 	}
 
+#ifdef RG350
+	char* CustomJoystick(void) { return &kCustom[0]; };
+	void SetCustomJoystick(char* joystick)
+	{
+		for(int i=0;i<5;i++)
+		  kCustom[i] = joystick[i];
+	}
+#endif
+	
 	eSpeccy* speccy;
 #ifdef USE_UI
 	xUi::eDesktop* ui_desktop;
@@ -140,6 +149,9 @@ static struct eSpeccyHandler : public eHandler, public eRZX::eHandler, public xZ
 
 	enum { SOUND_DEV_COUNT = 3 };
 	eDeviceSound* sound_dev[SOUND_DEV_COUNT];
+#ifdef RG350
+	char kCustom[5] = {'K','L','A',' ','Z'};/*AbadÃ­a del crimen*/;
+#endif
 } sh;
 
 void eSpeccyHandler::OnInit()
@@ -289,6 +301,19 @@ void eSpeccyHandler::OnKey(char key, dword flags)
 		case 'f' : key = ' '; break;
 		}
 	}
+#ifdef RG350
+	else if(flags&KF_KCUSTOM)
+	{
+		switch(key)
+		{
+		case 'l' : key = kCustom[0]; break;
+		case 'r' : key = kCustom[1]; break;
+		case 'u' : key = kCustom[2]; break;
+		case 'd' : key = kCustom[3]; break;
+		case 'f' : key = kCustom[4]; break;
+		}
+	}
+#endif
 	speccy->Device<eKeyboard>()->OnKey(key, down, shift, ctrl, alt);
 }
 void eSpeccyHandler::OnMouse(eMouseAction action, byte a, byte b)

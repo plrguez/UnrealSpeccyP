@@ -101,7 +101,10 @@ void eMenu::Init()
 	ePoint margin(6, 6);
 	#ifdef RG350
 		eRect r_dlg(ePoint(130, 2*margin.y));
-		r_dlg.Move(ePoint(32, 24));
+		if(gcw_fullscreen)
+		    r_dlg.Move(ePoint(32, 24));
+		else
+		    r_dlg.Move(ePoint(8, 8));
 	#else
 		eRect r_dlg(ePoint(160, 2*margin.y));
 		r_dlg.Move(ePoint(8, 8));

@@ -23,6 +23,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "ui_keyboard.h"
 #include "ui_file_open.h"
 #include "ui_web_browse.h"
+#ifdef RG350
+#include "ui_custom_joystick.h"
+#endif
 #include "../../tools/options.h"
 #include "../../tools/profiler.h"
 #include "../../options_common.h"
@@ -44,6 +47,18 @@ static struct eOptionOpenFile : public xOptions::eOptionB
 	virtual void Change(bool next = true) { if(next) on = true; }
 	bool on;
 } op_open_file;
+
+#ifdef RG350
+static struct eOptionJCustom : public xOptions::eOptionB
+{
+	eOptionJCustom() : on(false) { storeable = false; }
+	virtual const char* Name() const { return "custom joy"; }
+	virtual const char*	Value() const { char* s = new char[8]; s = xPlatform::Handler()->CustomJoystick(); s[6] = '\0'; return strcat(s," >"); }
+	virtual void Change(bool next = true) { if(next) on = true; }
+	virtual int Order() const { return 12; }
+	bool on;
+} custom_joy;
+#endif
 
 #ifdef USE_WEB
 static struct eOptionBrowseWeb : public xOptions::eOptionB
@@ -82,6 +97,16 @@ void eMainDialog::Update()
 		d->Id(D_FILE_OPEN);
 		Insert(d);
 	}
+#ifdef RG350
+	if(custom_joy.on)
+	{
+		custom_joy.on = false;
+		Clear();
+		eDialog* d = new eCustomJoystickDialog(xPlatform::Handler()->CustomJoystick());
+		d->Id(D_CUSTOM_JOY);
+		Insert(d);
+	}
+#endif
 #ifdef USE_WEB
 	if(op_browse_web.on)
 	{
@@ -172,6 +197,15 @@ void eMainDialog::OnNotify(byte n, byte from)
 			Handler()->OnKey(key, flags);
 		}
 		break;
+#ifdef RG350
+	case D_CUSTOM_JOY:
+		{
+			eCustomJoystickDialog* d = (eCustomJoystickDialog*)*childs;
+			if(d->Quit())
+				clear = true;
+		}
+		break;
+#endif
 	}
 }
 

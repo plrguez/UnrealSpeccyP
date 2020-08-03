@@ -31,13 +31,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DINGOO_BUTTON_LEFT          SDLK_LEFT
 #define DINGOO_BUTTON_R             SDLK_BACKSPACE
 #define DINGOO_BUTTON_L             SDLK_TAB
+#ifdef RG350
+#define DINGOO_BUTTON_L2            SDLK_PAGEUP,
+#define DINGOO_BUTTON_R2            SDLK_PAGEDOWN,
+#define DINGOO_BUTTON_L3            SDLK_KP_DIVIDE,
+#define DINGOO_BUTTON_R3            SDLK_KP_PERIOD
+#endif
 #define DINGOO_BUTTON_A             SDLK_LCTRL
 #define DINGOO_BUTTON_B             SDLK_LALT
 #define DINGOO_BUTTON_X             SDLK_SPACE
 #define DINGOO_BUTTON_Y             SDLK_LSHIFT
 #define DINGOO_BUTTON_SELECT        SDLK_ESCAPE
 #define DINGOO_BUTTON_START         SDLK_RETURN
+#ifdef RG350
+#define DINGOO_BUTTON_POWER         SDLK_HOME
+#else
 #define DINGOO_BUTTON_POWER         SDLK_END
+#endif
 
 namespace xPlatform
 {
