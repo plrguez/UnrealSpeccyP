@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef	__UI_CUSTOM_JOYSTICK_H__
 #define	__UI_CUSTOM_JOYSTICK_H__
 
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 
 #include "../../ui/ui_dialog.h"
 #include "ui_keyboard.h"
@@ -78,7 +78,7 @@ protected:
 }
 //namespace xUi
 
-#endif//RG350
+#endif//RG350 - RETROFW
 
 
 #endif//__UI_CUSTOM_JOYSTICK_H__

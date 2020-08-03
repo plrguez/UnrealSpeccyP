@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 
 #include "../platform.h"
 #include "ui_custom_joystick.h"
@@ -223,4 +223,4 @@ void eCustomJoystickDialog::ParseKey(char key, dword _flags)
 }
 //namespace xUi
 
-#endif//RG350
+#endif//RG350 - RETROFW

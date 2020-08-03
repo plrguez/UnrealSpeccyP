@@ -220,7 +220,7 @@ static struct eOptionJoy : public xOptions::eOptionInt
 	virtual const char* Name() const { return "joystick"; }
 	virtual const char** Values() const
 	{
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 		static const char* values[] = { "cursorenter", "cursor", "kempston", "sinclair2", "qaopm", "qaopspace", "custom", NULL };
 #else
 		static const char* values[] = { "cursorenter", "cursor", "kempston", "sinclair2", "qaopm", "qaopspace", NULL };
@@ -306,7 +306,7 @@ dword OpJoyKeyFlags()
 	case J_SINCLAIR2:	return KF_SINCLAIR2;
 	case J_QAOPM:		return KF_QAOPM;
 	case J_QAOPSPACE:	return KF_QAOPSPACE;
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 	case J_KCUSTOM:		return KF_KCUSTOM;
 #endif
 	}

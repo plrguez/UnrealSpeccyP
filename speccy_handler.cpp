@@ -39,9 +39,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "file_type.h"
 #include "snapshot/rzx.h"
 
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 int gcw_fullscreen = 1;
-#endif//RG350
+#endif//RG350 - RETROFW
 
 namespace xPlatform
 {
@@ -128,7 +128,7 @@ static struct eSpeccyHandler : public eHandler, public eRZX::eHandler, public xZ
 			speccy->CPU()->HandlerIo(this);
 	}
 
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 	char* CustomJoystick(void) { return &kCustom[0]; };
 	void SetCustomJoystick(char* joystick)
 	{
@@ -149,7 +149,7 @@ static struct eSpeccyHandler : public eHandler, public eRZX::eHandler, public xZ
 
 	enum { SOUND_DEV_COUNT = 3 };
 	eDeviceSound* sound_dev[SOUND_DEV_COUNT];
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 	char kCustom[5] = {'K','L','A',' ','Z'};/*AbadÃ­a del crimen*/;
 #endif
 } sh;
@@ -301,7 +301,7 @@ void eSpeccyHandler::OnKey(char key, dword flags)
 		case 'f' : key = ' '; break;
 		}
 	}
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 	else if(flags&KF_KCUSTOM)
 	{
 		switch(key)
@@ -391,7 +391,7 @@ static struct eOption48K : public xOptions::eOptionBool
 
 static struct eOptionResetToServiceRom : public xOptions::eOptionBool
 {
-	#ifdef RG350
+	#if defined RG350 || defined RETROFW
 	virtual const char* Name() const { return "reset to s-rom"; }
 	#else
 	virtual const char* Name() const { return "reset to service rom"; }
@@ -399,7 +399,7 @@ static struct eOptionResetToServiceRom : public xOptions::eOptionBool
 	virtual int Order() const { return 79; }
 } op_reset_to_service_rom;
 
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 static struct eOptionFullscreen : public xOptions::eOptionBool
 {
 	virtual const char* Name() const { return "fullscreen"; }

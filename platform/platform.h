@@ -69,7 +69,7 @@ enum eKeyFlags
 	KF_SINCLAIR2	= 0x80,
 	KF_QAOPM		= 0x100,
 	KF_QAOPSPACE	= 0x200,
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 	KF_KCUSTOM      = 0x400,
 #endif
 
@@ -118,7 +118,7 @@ struct eHandler
 	virtual dword AudioDataReady(int source) const = 0;
 	virtual void AudioDataUse(int source, dword size) = 0;
 	virtual void AudioSetSampleRate(dword sample_rate) = 0;
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 	//Custom Joystick
 	virtual char* CustomJoystick(void) = 0;
 	virtual void SetCustomJoystick(char* joystick) = 0;

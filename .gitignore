@@ -1,4 +1,6 @@
 build/dingux/Release
+build/dingux/Release-retrofw
+build/dingux/Release-retrofw1
 build/dingux/opk/res
 build/dingux/opk/unreal_speccy_portable
 nbproject

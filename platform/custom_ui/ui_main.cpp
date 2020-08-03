@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "ui_keyboard.h"
 #include "ui_file_open.h"
 #include "ui_web_browse.h"
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 #include "ui_custom_joystick.h"
 #endif
 #include "../../tools/options.h"
@@ -48,7 +48,7 @@ static struct eOptionOpenFile : public xOptions::eOptionB
 	bool on;
 } op_open_file;
 
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 static struct eOptionJCustom : public xOptions::eOptionB
 {
 	eOptionJCustom() : on(false) { storeable = false; }
@@ -97,7 +97,7 @@ void eMainDialog::Update()
 		d->Id(D_FILE_OPEN);
 		Insert(d);
 	}
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 	if(custom_joy.on)
 	{
 		custom_joy.on = false;
@@ -197,7 +197,7 @@ void eMainDialog::OnNotify(byte n, byte from)
 			Handler()->OnKey(key, flags);
 		}
 		break;
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 	case D_CUSTOM_JOY:
 		{
 			eCustomJoystickDialog* d = (eCustomJoystickDialog*)*childs;

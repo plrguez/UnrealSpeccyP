@@ -35,7 +35,11 @@ class eDesktop : public eDialog
 public:
 	eDesktop()
 	{
+#if defined RG350 || defined RETROFW
 		_CreateFont(6, 6, "res/font/spxtrm4f.fnt");
+#else
+		_CreateFont(6, 6, "/media/data/local/home/.usp/font/spxtrm4f.fnt");
+#endif
 	}
 	byte* VideoData() const { return Focused() ? screen : NULL; }
 	bool Focused() const

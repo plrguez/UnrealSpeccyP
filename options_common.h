@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 namespace xPlatform
 {
 
-#ifdef RG350
+#if defined RG350 || defined RETROFW
 enum eJoystick { J_FIRST, J_CURSORENTER = J_FIRST, J_CURSOR, J_KEMPSTON, J_SINCLAIR2, J_QAOPM, J_QAOPSPACE, J_KCUSTOM, J_LAST };
 #else
 enum eJoystick { J_FIRST, J_CURSORENTER = J_FIRST, J_CURSOR, J_KEMPSTON, J_SINCLAIR2, J_QAOPM, J_QAOPSPACE, J_LAST };

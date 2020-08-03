@@ -103,11 +103,19 @@ void eRom::Init()
 	memcpy(memory->Get(ROM_SYS),	service,	eMemory::PAGE_SIZE);
 	memcpy(memory->Get(ROM_DOS),	dos513f,	eMemory::PAGE_SIZE);
 #else//USE_EMBEDDED_RESOURCES
+#if defined RG350 || defined RETROFW
 	LoadRom(ROM_128_0,	xIo::ResourcePath("res/rom/sos128_0.rom"));
 	LoadRom(ROM_128_1,	xIo::ResourcePath("res/rom/sos128_1.rom"));
 	LoadRom(ROM_48,		xIo::ResourcePath("res/rom/sos48.rom"));
 	LoadRom(ROM_SYS,	xIo::ResourcePath("res/rom/service.rom"));
 	LoadRom(ROM_DOS,	xIo::ResourcePath("res/rom/dos513f.rom"));
+#else
+	LoadRom(ROM_128_0,	xIo::ResourcePath("/media/data/local/home/.usp/rom/sos128_0.rom"));
+	LoadRom(ROM_128_1,	xIo::ResourcePath("/media/data/local/home/.usp/rom/sos128_1.rom"));
+	LoadRom(ROM_48,		xIo::ResourcePath("/media/data/local/home/.usp/rom/sos48.rom"));
+	LoadRom(ROM_SYS,	xIo::ResourcePath("/media/data/local/home/.usp/rom/service.rom"));
+	LoadRom(ROM_DOS,	xIo::ResourcePath("/media/data/local/home/.usp/rom/dos513f.rom"));
+#endif
 #endif//USE_EMBEDDED_RESOURCES
 }
 //=============================================================================
