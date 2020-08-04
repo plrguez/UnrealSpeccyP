@@ -28,13 +28,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <SDL.h>
 #include "../../ui/ui.h"
 
-#if defined RG350 || defined RETROFW
 #define SCREEN_WIDTH  320
 #define SCREEN_HEIGHT 240
+#if defined RG350 || defined RETROFW
 #define BPP            16
+#else
+#define BPP            32
+#endif
 #define BORDER_WIDTH   32
 #define BORDER_HEIGHT  24
-#endif
 
 namespace xPlatform
 {
