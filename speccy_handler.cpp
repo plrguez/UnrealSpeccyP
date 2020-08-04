@@ -136,7 +136,7 @@ static struct eSpeccyHandler : public eHandler, public eRZX::eHandler, public xZ
 		  kCustom[i] = joystick[i];
 	}
 #endif
-	
+
 	eSpeccy* speccy;
 #ifdef USE_UI
 	xUi::eDesktop* ui_desktop;
@@ -150,7 +150,7 @@ static struct eSpeccyHandler : public eHandler, public eRZX::eHandler, public xZ
 	enum { SOUND_DEV_COUNT = 3 };
 	eDeviceSound* sound_dev[SOUND_DEV_COUNT];
 #if defined RG350 || defined RETROFW
-	char kCustom[5] = {'K','L','A',' ','Z'};/*AbadÃ­a del crimen*/;
+	char kCustom[5] = {'K','L','A',' ','Z'};/*Abadia del crimen*/;
 #endif
 } sh;
 
