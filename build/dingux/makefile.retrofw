@@ -42,7 +42,7 @@ else
 OPK_TARGET := $(DIST_PATH)/$(PROJECT_NAME).opk
 endif
 
-DESKTOP_ENTRY := opk/default.retrofw.desktop
+DESKTOP_ENTRY := ipk/default.retrofw.desktop
 ICON := opk/icon-32x32.png
 
 STD_OPTS := -G0 -Wall -c  -fno-builtin -fno-exceptions -fno-pic
@@ -89,12 +89,12 @@ $(OPK_TARGET): $(BIN_TARGET) $(DESKTOP_ENTRY) $(ICON)
 	cp $(SRC_PATH)/res/rom/sos128_1.rom opk/res/rom
 	cp $(SRC_PATH)/res/rom/sos48.rom opk/res/rom
 ifeq ($(DEVICE),retrofw1)
-	@rm -rf /tmp/.speccy-ipk/ && mkdir -p /tmp/.speccy-ipk/root/home/retrofw/emus/speccy /tmp/.speccy-ipk/root/home/retrofw/apps/gmenu2x/sections/emulators /tmp/.speccy-ipk/root/home/retrofw/apps/gmenu2x/sections/emulators.systems
-	@cp -r $(BIN_TARGET) opk/icon-32x32.png opk/res /tmp/.speccy-ipk/root/home/retrofw/emus/speccy
-	@cp opk/speccy.lnk /tmp/.speccy-ipk/root/home/retrofw/apps/gmenu2x/sections/emulators
-	@cp opk/zxspectrum.speccy.lnk /tmp/.speccy-ipk/root/home/retrofw/apps/gmenu2x/sections/emulators.systems
-	@sed "s/^Version:.*/Version: $$(date +%Y%m%d)/" opk/control > /tmp/.speccy-ipk/control
-	@cp opk/conffiles opk/postinst /tmp/.speccy-ipk/
+	@rm -rf /tmp/.speccy-ipk/ && mkdir -p /tmp/.speccy-ipk/root/home/retrofw/emus/unreal_speccy_portable /tmp/.speccy-ipk/root/home/retrofw/apps/gmenu2x/sections/emulators /tmp/.speccy-ipk/root/home/retrofw/apps/gmenu2x/sections/emulators.systems
+	@cp -r $(BIN_TARGET) opk/icon-32x32.png opk/res /tmp/.speccy-ipk/root/home/retrofw/emus/unreal_speccy_portable
+	@cp ipk/unreal_speccy_portable.lnk /tmp/.speccy-ipk/root/home/retrofw/apps/gmenu2x/sections/emulators
+	@cp ipk/zxspectrum.unreal_speccy_portable.lnk /tmp/.speccy-ipk/root/home/retrofw/apps/gmenu2x/sections/emulators.systems
+	@sed "s/^Version:.*/Version: $$(date +%Y%m%d)/" ipk/control > /tmp/.speccy-ipk/control
+	@cp ipk/conffiles ipk/postinst /tmp/.speccy-ipk/
 	@tar --owner=0 --group=0 -czvf /tmp/.speccy-ipk/control.tar.gz -C /tmp/.speccy-ipk/ control conffiles
 	@tar --owner=0 --group=0 -czvf /tmp/.speccy-ipk/data.tar.gz -C /tmp/.speccy-ipk/root/ .
 	@echo 2.0 > /tmp/.speccy-ipk/debian-binary
