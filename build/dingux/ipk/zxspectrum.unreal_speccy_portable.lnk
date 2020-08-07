@@ -1,6 +1,7 @@
-title=ZX Spectrum
-description=Speccy Emulator
+title=Unreal Speccy Portable
+description=RetroFW port of Unreal Speccy Portable
 exec=/home/retrofw/emus/unreal_speccy_portable/unreal_speccy_portable.dge
+icon=/home/retrofw/emus/unreal_speccy_portable/icon-32x32.png
 selectordir=/home/retrofw/roms/zxspectrum
 selectorfilter=.trd,.scl,.z80,.tzx,.tap,.sna,.csw
 clock=600

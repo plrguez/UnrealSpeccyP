@@ -3,8 +3,8 @@ Version:
 Description: RetroFW port of UnrealSpeccyP
 Section: emus
 Priority: optional
-Maintainer: goldmojo
+Maintainer: plrguez
 Architecture: mipsel
-Homepage: https://github.com/goldmojo/UnrealSpeccyP
+Homepage: https://github.com/plrguez/UnrealSpeccyP
 Depends:
-Source: https://github.com/goldmojo/UnrealSpeccyP
+Source: https://github.com/plrguez/UnrealSpeccyP
